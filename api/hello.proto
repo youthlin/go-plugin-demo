@@ -1,0 +1,20 @@
+syntax = "proto3";
+// 在本目录下执行
+// protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative hello.proto
+// https://grpc.io/docs/languages/go/quickstart/#regenerate-grpc-code
+// protoc 安装：https://grpc.io/docs/protoc-installation/
+// github.com/google/protobuf/releases
+option go_package = "github.com/youthlin/plugin-demo/api";
+
+message HelloReq {
+    string name = 1;
+}
+
+message HelloResp {
+    int32 code = 1;
+    string msg = 2;
+}
+
+service Hello {
+    rpc Hello (HelloReq) returns (HelloResp);
+}
